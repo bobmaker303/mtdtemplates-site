@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MTD Templates — Making Tax Digital Spreadsheet for UK Landlords</title>
+    <meta name="description" content="MTD-ready Excel spreadsheet template for UK landlords. HMRC SA105 aligned, quarterly summaries, Section 24 calculator. One-off purchase, no monthly fees.">
+    <meta name="keywords" content="making tax digital, MTD, landlord, spreadsheet, template, HMRC, SA105, UK property, rental income, tax return">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #1B2A4A;
+            --dark-blue: #2C5F8A;
+            --mid-blue: #4A90C4;
+            --light-blue: #D4E6F1;
+            --pale-blue: #EBF5FB;
+            --green: #27AE60;
+            --dark-green: #1E8449;
+            --amber: #F39C12;
+            --red: #C0392B;
+            --dark-grey: #4A4A4A;
+            --light-grey: #F8F9FA;
+            --white: #FFFFFF;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--dark-grey);
+            line-height: 1.6;
+            background: var(--white);
+        }
+
+        /* URGENCY BANNER */
+        .urgency-banner {
+            background: var(--red);
+            color: white;
+            text-align: center;
+            padding: 12px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+        .urgency-banner span { color: var(--amber); }
+
+        /* NAV */
+        nav {
+            background: var(--navy);
+            padding: 16px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            color: white;
+            font-size: 20px;
+            font-weight: 800;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+        .logo span { color: var(--mid-blue); }
+        .nav-cta {
+            background: var(--green);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: background 0.2s;
+        }
+        .nav-cta:hover { background: var(--dark-green); }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--dark-blue) 100%);
+            padding: 80px 40px;
+            text-align: center;
+            color: white;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 24px;
+            color: var(--light-blue);
+        }
+        .hero h1 {
+            font-size: clamp(32px, 5vw, 52px);
+            font-weight: 800;
+            line-height: 1.15;
+            max-width: 800px;
+            margin: 0 auto 20px;
+            letter-spacing: -1px;
+        }
+        .hero h1 span { color: var(--amber); }
+        .hero p {
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto 32px;
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+        .hero-price {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        .hero-price-note {
+            font-size: 16px;
+            opacity: 0.7;
+            margin-bottom: 32px;
+        }
+        .hero-price-compare {
+            text-decoration: line-through;
+            opacity: 0.5;
+            font-size: 24px;
+            margin-right: 12px;
+        }
+        .cta-button {
+            display: inline-block;
+            background: var(--green);
+            color: white;
+            padding: 16px 48px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 18px;
+            transition: all 0.2s;
+            box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
+        }
+        .cta-button:hover {
+            background: var(--dark-green);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(39, 174, 96, 0.4);
+        }
+        .hero-trust {
+            margin-top: 24px;
+            font-size: 13px;
+            opacity: 0.6;
+        }
+
+        /* PROBLEM */
+        .problem {
+            padding: 80px 40px;
+            background: var(--light-grey);
+        }
+        .problem-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .problem h2 {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 16px;
+        }
+        .problem .subtitle {
+            font-size: 18px;
+            color: var(--dark-grey);
+            margin-bottom: 40px;
+        }
+        .timeline {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        .timeline-item {
+            background: white;
+            border: 2px solid var(--light-blue);
+            border-radius: 12px;
+            padding: 24px 20px;
+            width: 200px;
+            position: relative;
+            margin: 0 8px;
+        }
+        .timeline-item.active {
+            border-color: var(--red);
+            background: #FFF5F5;
+        }
+        .timeline-item .date {
+            font-weight: 700;
+            color: var(--dark-blue);
+            font-size: 14px;
+        }
+        .timeline-item.active .date {
+            color: var(--red);
+        }
+        .timeline-item .threshold {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--navy);
+            margin: 8px 0;
+        }
+        .timeline-item .desc {
+            font-size: 13px;
+            color: var(--dark-grey);
+        }
+        .timeline-item .badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: var(--red);
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 10px;
+        }
+        .problem-stat {
+            font-size: 16px;
+            color: var(--dark-grey);
+            line-height: 1.8;
+        }
+        .problem-stat strong { color: var(--navy); }
+
+        /* FEATURES */
+        .features {
+            padding: 80px 40px;
+        }
+        .features-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .features h2 {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 48px;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+        .feature-card {
+            background: var(--light-grey);
+            border-radius: 12px;
+            padding: 32px;
+            border: 1px solid #E8E8E8;
+        }
+        .feature-icon {
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+        .feature-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+        .feature-card p {
+            font-size: 14px;
+            color: var(--dark-grey);
+            line-height: 1.6;
+        }
+
+        /* COMPARISON */
+        .comparison {
+            padding: 80px 40px;
+            background: var(--navy);
+            color: white;
+        }
+        .comparison-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .comparison h2 {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 40px;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            margin-bottom: 32px;
+        }
+        .comparison-table th {
+            padding: 14px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            border-bottom: 2px solid rgba(255,255,255,0.2);
+        }
+        .comparison-table td {
+            padding: 14px 20px;
+            font-size: 14px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .comparison-table .highlight {
+            background: rgba(39, 174, 96, 0.15);
+            border-radius: 8px;
+        }
+        .comparison-table .price-tag {
+            font-weight: 700;
+            font-size: 16px;
+        }
+        .comparison-table .green { color: var(--green); }
+        .comparison-table .red { color: #E74C3C; }
+
+        /* WHAT'S INSIDE */
+        .whats-inside {
+            padding: 80px 40px;
+            background: var(--pale-blue);
+        }
+        .whats-inside-inner {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .whats-inside h2 {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 40px;
+        }
+        .tab-list {
+            list-style: none;
+        }
+        .tab-list li {
+            background: white;
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            border: 1px solid #E0E0E0;
+        }
+        .tab-list .tab-icon {
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        .tab-list h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 4px;
+        }
+        .tab-list p {
+            font-size: 14px;
+            color: var(--dark-grey);
+        }
+
+        /* FAQ */
+        .faq {
+            padding: 80px 40px;
+        }
+        .faq-inner {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .faq h2 {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 40px;
+        }
+        .faq-item {
+            border-bottom: 1px solid #E8E8E8;
+            padding: 20px 0;
+        }
+        .faq-item h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+        .faq-item p {
+            font-size: 14px;
+            color: var(--dark-grey);
+            line-height: 1.7;
+        }
+
+        /* FINAL CTA */
+        .final-cta {
+            padding: 80px 40px;
+            background: linear-gradient(135deg, var(--dark-green) 0%, var(--green) 100%);
+            text-align: center;
+            color: white;
+        }
+        .final-cta h2 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+        .final-cta p {
+            font-size: 18px;
+            margin-bottom: 32px;
+            opacity: 0.9;
+        }
+        .cta-button-white {
+            display: inline-block;
+            background: white;
+            color: var(--dark-green);
+            padding: 16px 48px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 18px;
+            transition: all 0.2s;
+        }
+        .cta-button-white:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--navy);
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            padding: 32px 40px;
+            font-size: 13px;
+        }
+        footer a { color: rgba(255,255,255,0.8); }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero { padding: 60px 20px; }
+            .hero h1 { font-size: 28px; }
+            nav { padding: 12px 20px; }
+            .features, .comparison, .whats-inside, .faq, .problem { padding: 60px 20px; }
+            .timeline { flex-direction: column; align-items: center; }
+            .timeline-item { width: 100%; max-width: 280px; margin-bottom: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- URGENCY BANNER -->
+    <div class="urgency-banner">
+        ⚠️ MTD is <span>mandatory from April 2026</span> for landlords earning £50k+. Are you ready?
+    </div>
+
+    <!-- NAV -->
+    <nav>
+        <a href="/" class="logo">mtd<span>templates</span>.com</a>
+        <a href="#buy" class="nav-cta">Get the Template — £29.99</a>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-badge">🏠 Built specifically for UK landlords</div>
+        <h1>The MTD-Ready Spreadsheet That <span>Saves You £200+/Year</span> on Tax Software</h1>
+        <p>HMRC-aligned Excel template with quarterly summaries, Section 24 calculator, and everything you need for Making Tax Digital compliance — without a monthly subscription.</p>
+        <div class="hero-price">
+            <span class="hero-price-compare">£144/yr</span>
+            £29.99
+        </div>
+        <div class="hero-price-note">One-off payment. No subscription. No monthly fees. Ever.</div>
+        <a href="#buy" class="cta-button">Download Now — £29.99</a>
+        <div class="hero-trust">✓ Instant download · ✓ Excel + Google Sheets · ✓ SA105 aligned · ✓ Section 24 included</div>
+    </section>
+
+    <!-- PROBLEM -->
+    <section class="problem">
+        <div class="problem-inner">
+            <h2>Making Tax Digital Is Coming — Ready or Not</h2>
+            <p class="subtitle">HMRC is rolling out mandatory digital reporting for landlords in three waves:</p>
+
+            <div class="timeline">
+                <div class="timeline-item active">
+                    <div class="badge">NOW</div>
+                    <div class="date">April 2026</div>
+                    <div class="threshold">£50k+</div>
+                    <div class="desc">Landlords earning over £50,000 gross rental income</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="date">April 2027</div>
+                    <div class="threshold">£30k+</div>
+                    <div class="desc">Threshold drops to £30,000 gross income</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="date">April 2028</div>
+                    <div class="threshold">£20k+</div>
+                    <div class="desc">Most landlords will be affected</div>
+                </div>
+            </div>
+
+            <p class="problem-stat">
+                You'll need to submit <strong>quarterly digital updates</strong> to HMRC using compatible software.<br>
+                Most MTD software costs <strong>£100–£500 per year</strong>.<br>
+                Our template costs <strong>£29.99 once</strong> — and works with free bridging software to submit directly to HMRC.
+            </p>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features">
+        <div class="features-inner">
+            <h2>Everything You Need for MTD Compliance</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>SA105 Aligned Categories</h3>
+                    <p>Every expense category matches HMRC's SA105 property income form exactly. Dropdown menus ensure you always pick the right box — no guessing.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📅</div>
+                    <h3>Quarterly Summaries</h3>
+                    <p>Auto-calculated cumulative figures for each MTD quarter. Just copy into your bridging software (e.g., AbraTax) and submit to HMRC.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏠</div>
+                    <h3>Multi-Property Support</h3>
+                    <p>Track up to 10 properties in one spreadsheet. Each transaction is tagged to a property with automatic portfolio-level summaries.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>Section 24 Calculator</h3>
+                    <p>Automatically calculates your 20% mortgage interest tax credit under Section 24 rules. No more confusion about finance cost relief.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3>Visual Dashboard</h3>
+                    <p>At-a-glance KPIs, expense breakdown charts, and income vs expenses graphs. See your portfolio performance instantly.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📖</div>
+                    <h3>Built-in HMRC Reference Guide</h3>
+                    <p>Full allowable expenses reference — what you can and can't claim for each SA105 box. Never miss a legitimate deduction again.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPARISON -->
+    <section class="comparison">
+        <div class="comparison-inner">
+            <h2>Why Pay Monthly When You Don't Have To?</h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Solution</th>
+                        <th>Annual Cost</th>
+                        <th>MTD Ready</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Xero</td>
+                        <td class="price-tag red">£180–£504/yr</td>
+                        <td>✅</td>
+                    </tr>
+                    <tr>
+                        <td>FreeAgent</td>
+                        <td class="price-tag red">£288/yr</td>
+                        <td>✅</td>
+                    </tr>
+                    <tr>
+                        <td>QuickBooks</td>
+                        <td class="price-tag red">£168–£288/yr</td>
+                        <td>✅</td>
+                    </tr>
+                    <tr>
+                        <td>Landlord Vision</td>
+                        <td class="price-tag red">£144–£288/yr</td>
+                        <td>✅</td>
+                    </tr>
+                    <tr>
+                        <td>Hammock Premium</td>
+                        <td class="price-tag red">£96/yr</td>
+                        <td>✅</td>
+                    </tr>
+                    <tr class="highlight">
+                        <td><strong>MTD Templates</strong></td>
+                        <td class="price-tag green">£29.99 once</td>
+                        <td>✅</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="font-size: 14px; opacity: 0.7;">Pair with free bridging software (e.g., AbraTax) to submit quarterly updates directly to HMRC.</p>
+        </div>
+    </section>
+
+    <!-- WHAT'S INSIDE -->
+    <section class="whats-inside">
+        <div class="whats-inside-inner">
+            <h2>What's Inside the Template</h2>
+            <ul class="tab-list">
+                <li>
+                    <span class="tab-icon">📋</span>
+                    <div>
+                        <h4>Welcome & Quick Start Guide</h4>
+                        <p>Step-by-step instructions, MTD quarterly deadlines, colour key for input cells, and important notes. Get started in minutes.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="tab-icon">🏠</span>
+                    <div>
+                        <h4>Property Register</h4>
+                        <p>Record up to 10 properties with address, type, ownership percentage, purchase price, mortgage details, and annual interest for Section 24.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="tab-icon">💰</span>
+                    <div>
+                        <h4>Transaction Log (200 rows)</h4>
+                        <p>Record every income and expense with date, property, description, HMRC category dropdown, and notes. Pre-filled with examples.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="tab-icon">📊</span>
+                    <div>
+                        <h4>MTD Quarterly Summary</h4>
+                        <p>Auto-calculated cumulative figures for each quarter, broken down by SA105 box. Ready to submit via bridging software.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="tab-icon">📈</span>
+                    <div>
+                        <h4>Dashboard</h4>
+                        <p>Key figures at a glance — total income, expenses, net profit, Section 24 relief. Pie chart and bar chart visualisations.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="tab-icon">📖</span>
+                    <div>
+                        <h4>HMRC Reference Guide</h4>
+                        <p>Complete breakdown of allowable and non-allowable expenses for every SA105 box, plus useful HMRC links.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+        <div class="faq-inner">
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-item">
+                <h4>Is this template actually MTD compliant?</h4>
+                <p>This template is designed for MTD-compliant record keeping with categories aligned to HMRC's SA105 form. To submit to HMRC, you'll pair it with bridging software like AbraTax (from ~£36/year), which connects your spreadsheet data to HMRC's systems.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Does it work in Excel AND Google Sheets?</h4>
+                <p>Yes. The template is built in Excel (.xlsx) format and is fully compatible with Google Sheets. All formulas, dropdowns, and formatting work in both.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>How many properties can I track?</h4>
+                <p>Up to 10 properties in a single spreadsheet. Each transaction is tagged to a specific property, and summaries aggregate across your entire portfolio.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>What about Section 24 mortgage interest?</h4>
+                <p>Fully handled. Enter your annual mortgage interest for each property, and the template automatically calculates your 20% tax credit — separate from your property expenses, exactly as HMRC requires.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Do I still need an accountant?</h4>
+                <p>This template handles your record keeping and quarterly summaries. We always recommend consulting a qualified accountant for your specific tax situation, especially for your Final Declaration due each January.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>What if I'm not affected by MTD yet?</h4>
+                <p>Even if you're below the threshold, proper digital records will save you time at tax return season. And when your threshold arrives (£30k in 2027, £20k in 2028), you'll already be prepared.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Is there a refund policy?</h4>
+                <p>Due to the digital nature of the product, we cannot offer refunds once downloaded. However, if you experience any issues, contact us and we'll do our best to help.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final-cta" id="buy">
+        <h2>Stop Overpaying for MTD Compliance</h2>
+        <p>One spreadsheet. One payment. Full tax year covered.</p>
+        <div class="hero-price" style="color: white; margin-bottom: 8px;">£29.99</div>
+        <div style="margin-bottom: 32px; opacity: 0.8;">One-off payment — not £144+/year like the alternatives</div>
+        <a href="#" class="cta-button-white">Download Now — £29.99</a>
+        <div style="margin-top: 16px; font-size: 13px; opacity: 0.7;">Instant download · Excel + Google Sheets · Tax Year 2026-27</div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 mtdtemplates.com — All rights reserved.</p>
+        <p style="margin-top: 8px;">This template is a record-keeping tool and does not constitute tax advice. Always consult a qualified accountant for your specific situation.</p>
+    </footer>
+
+</body>
+</html>
